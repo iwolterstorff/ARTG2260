@@ -1,3 +1,11 @@
+// Ian Wolterstorff
+// ARTG 2260
+// wolterstorff.i@husky.neu.edu
+// Assignment 03
+// "Floral Americana"
+
+
+
 ArrayList<PVector> loPoints = new ArrayList<PVector>();
 
 ArrayList<Flower> loFlowers = new ArrayList<Flower>();
@@ -25,8 +33,14 @@ class Flower {
     scale(radius / (width / 2));
     
     rotate(rotation);
+    
+    color flower = color(0, 204, 204, 200);
+    
+    if (radius % 0.02 == 0) {
+      flower = color(127, 255, 0, 200);
+    }
 
-    fill(0, 204, 204, 200);
+    fill(flower);
 
     // ALL THE COMMENTED CODE IS FROM WHEN I WAS TRYING TO MAKE THE CORNERS ROUNDED
     // I would like to know if there is an easy way to do that
