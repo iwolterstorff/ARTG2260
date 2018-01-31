@@ -48,7 +48,7 @@ void draw() {
 
 void keyReleased() {
   if (key == 'a' || key == 'A') {
-    currentSize = (currentSize == 50) ? 100 : 50;
+    currentSize = (currentSize == 150) ? 50 : currentSize + 50;
   }
   
   if (key == 's' || key == 'S') {
