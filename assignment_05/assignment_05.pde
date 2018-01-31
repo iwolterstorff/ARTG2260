@@ -13,6 +13,13 @@ class Aoun {
     this.ydim = ydim;
   }
   
+  Aoun(float x, float y, float dim) {
+    this.x = x;
+    this.y = y;
+    this.xdim = dim;
+    this.ydim = dim;
+  }
+  
 }
 
 int currentSize;
@@ -42,5 +49,9 @@ void draw() {
 void keyReleased() {
   if (key == 'a' || key == 'A') {
     currentSize = (currentSize == 50) ? 100 : 50;
+  }
+  
+  if (key == 's' || key == 'S') {
+    saveFrame();
   }
 }
