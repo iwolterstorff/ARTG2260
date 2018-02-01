@@ -6,36 +6,56 @@
 Stage[] stages;
 
 class Stage {
-  Entity[] entities;
-  float time; //milliseconds
-  
-  Stage(Entity[] entities, float time) {
-    this.entities = entities;
+  String caption;
+  float time;
+
+  Stage(String caption, float time) {
+    this.caption = caption;
     this.time = time;
   }
-}
 
-abstract class Entity {
-  float x;
-  float y;
-}
-
-class ImageEntity extends Entity {
-  PImage image;
-  String caption;
-  
-  ImageEntity(PImage image, String caption) {
-    this.image = image;
-    this.caption = caption;
+  void display() {
+    textAlign(CENTER);
+    text(caption, width / 2, height / 2);
   }
 }
 
+class ImageStage extends Stage {
+  PImage image;
+  boolean isVertical;
+
+  ImageStage(String caption, float time, PImage image) {
+    super(caption, time);
+    this.image = image;
+    isVertical = (image.height > image.width);
+  }
+  
+  ImageStage(String caption, PImage image) {
+    this(caption, 3000, image);
+  }
+
+  @Override
+    void display() {
+    textAlign(CENTER);
+    imageMode(CENTER);
+    PImage localImg = image;
+    if (isVertical) {
+      localImg.resize(0, 600);
+    } else {
+      localImg.resize(400, 0);
+    }
+    image(localImg, width / 2, height / 2);
+    textSize(18);
+    text(caption, width / 2, ((5.0 / 6.0) * height));
+  }
+}
 
 
 void setup() {
   size(1024, 768);
   
-  
+  stages = new Stage[]{new ImageStage("I was born in Maine", loadImage("US-ME-EPS-02-6001.png")),
+                             new ImageStage("At 14, I moved to Connecticut", loadImage("US-CT-EPS-02-6001.png"))};
 }
 
 
@@ -43,29 +63,29 @@ void setup() {
 void draw() {
   background(128, 128, 128);
   //noLoop();
-  text(mouseX + ", " + mouseY, 10, 10);
-  displayMaine();
-  displayConnecticut();
+  //text(mouseX + ", " + mouseY, 10, 10);
+  stages[1].display();
 }
 
 
-void displayMaine() {
-  PImage localMe = me;
-  localMe.resize(0, 300);
-  image(localMe, 160, 195);
-  text("I was born in Maine", 130, 550);
-  fill(255, 0, 0);
-  star(202, 457, 10, 5, 5);
-}
 
-void displayConnecticut() {
-  PImage localCt = ct;
-  localCt.resize(240, 0);
-  image(localCt, 650, 230);
-  text("At 14, I moved to Connecticut", 640, 550);
-  fill(255, 0, 0);
-  star(750, 355, 10, 5, 5);
-}
+//void displayMaine() {
+//  PImage localMe = me;
+//  localMe.resize(0, 300);
+//  image(localMe, 160, 195);
+//  text("I was born in Maine", 130, 550);
+//  fill(255, 0, 0);
+//  star(202, 457, 10, 5, 5);
+//}
+
+//void displayConnecticut() {
+//  PImage localCt = ct;
+//  localCt.resize(240, 0);
+//  image(localCt, 650, 230);
+//  text("At 14, I moved to Connecticut", 640, 550);
+//  fill(255, 0, 0);
+//  star(750, 355, 10, 5, 5);
+//}
 
 // taken from https://processing.org/examples/star.html
 void star(float x, float y, float radius1, float radius2, int npoints) {

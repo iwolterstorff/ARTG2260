@@ -1,4 +1,12 @@
-////// JOEEESSSEPHHH AOUNNNNNN 
+//// Ian Wolterstorff
+//// ARTG 2260
+//// wolterstorff.i@husky.neu.edu
+//// Assignment 05
+
+/////////////////////
+// Press 'a' to toggle Aoun size
+// Press 's' to save image
+/////////////////////
 
 class Aoun {
   float x;
