@@ -5,6 +5,9 @@
 
 Stage[] stages;
 
+int time;
+int currentIndex;
+
 class Stage {
   String caption;
   float time;
@@ -54,6 +57,9 @@ class ImageStage extends Stage {
 void setup() {
   size(1024, 768);
   
+  time = millis();
+  currentIndex = 0;
+  
   stages = new Stage[]{new ImageStage("I was born in Maine", loadImage("US-ME-EPS-02-6001.png")),
                              new ImageStage("At 14, I moved to Connecticut", loadImage("US-CT-EPS-02-6001.png"))};
 }
@@ -64,7 +70,14 @@ void draw() {
   background(128, 128, 128);
   //noLoop();
   //text(mouseX + ", " + mouseY, 10, 10);
-  stages[1].display();
+  if (currentIndex > stages.length - 1) {
+    return;
+  }
+  stages[currentIndex].display();
+  if (millis() > time + stages[currentIndex].time) {
+    time = millis();
+    currentIndex++;
+  }
 }
 
 
