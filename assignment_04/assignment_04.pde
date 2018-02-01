@@ -3,20 +3,39 @@
 //  ARTG 2260: Programming Basics
 //  Assignment 04
 
-PImage me;
-PImage ct;
-PImage ma;
-PImage mi;
-PImage vt;
+Stage[] stages;
+
+class Stage {
+  Entity[] entities;
+  float time; //milliseconds
+  
+  Stage(Entity[] entities, float time) {
+    this.entities = entities;
+    this.time = time;
+  }
+}
+
+abstract class Entity {
+  float x;
+  float y;
+}
+
+class ImageEntity extends Entity {
+  PImage image;
+  String caption;
+  
+  ImageEntity(PImage image, String caption) {
+    this.image = image;
+    this.caption = caption;
+  }
+}
+
+
 
 void setup() {
   size(1024, 768);
   
-  me = loadImage("US-ME-EPS-02-6001.png");
-  ct = loadImage("US-CT-EPS-02-6001.png");
-  ma = loadImage("US-MA-EPS-02-6001.png");
-  mi = loadImage("US-MI-EPS-02-6001.png");
-  vt = loadImage("US-VT-EPS-02-6001.png");
+  
 }
 
 
