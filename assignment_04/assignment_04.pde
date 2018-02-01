@@ -44,7 +44,7 @@ class ImageStage {
       localImg.resize(600, 0);
     }
     // tint(255, map(millis() % DEFAULT_TIME, 0, 4000, 0, 255));
-    tint(255, map(constrain(sin(map((millis() - initialTime) % DEFAULT_TIME, 0, DEFAULT_TIME, 0, PI)), 0, PI/4), 0, PI/4, 0, 255));
+    tint(255, map(min(sin(map((millis() - initialTime) % DEFAULT_TIME, 0, DEFAULT_TIME, 0, PI)), PI/4), 0, PI/4, 0, 255));
     image(localImg, width / 2, height / 2);
     textSize(40);
     text(caption, width / 2, height - offset);
