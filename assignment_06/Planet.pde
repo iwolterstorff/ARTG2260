@@ -45,10 +45,10 @@ class Planet {
   }
   
   void display() {
+    camera(width/2, height * 1.3, (height/2) / tan(PI/6), width/2, height/2, 0, 0, 1, 0);
     pushMatrix();
-    //translate((width / 2) + (cos(radians(revDeg)-(PI/2.0))) * dist, (height / 2) + (sin(radians((revDeg)-(PI/2.0)))) * dist, -1000);
     translate((width / 2) + (cos(radians(revDeg) - (PI/2.0))) * dist, (height / 2) + (sin(radians(revDeg) - (PI/2.0))) * dist);
-    rotateX(-PI/6.0);
+    rotateX(-PI/2.0);
     rotateY(radians(rotDeg));
     shape(planet);
     popMatrix();
