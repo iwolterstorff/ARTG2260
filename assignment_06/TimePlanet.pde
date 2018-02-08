@@ -31,7 +31,6 @@ class TimePlanet extends Planet {
     switch (unit) {
     case SECONDS: 
       this.revDeg = second() * 6 + map(millis() - lastMillis, 0, 1000, 0, 6.0);
-      println(map(millis() - lastMillis, 0, 1000, 0, 6.0));
       break;
     case MINUTES: 
       this.revDeg = (minute() * 6) + ((float) second() / 10.0);

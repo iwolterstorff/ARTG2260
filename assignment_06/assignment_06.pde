@@ -2,11 +2,17 @@
 //    Ian Wolterstorff            //
 //    wolterstorff.i@husky.neu.edu//
 //    ARTG2260                    //
+//    "Solar Time"                //
+////////////////////////////////////
 
+
+import processing.pdf.*;
 
 PImage backdrop;
 
 Planet[] planets;
+
+boolean pRecord;
 
 void setup() {
   fullScreen(P3D);
@@ -25,7 +31,30 @@ void draw() {
   ambientLight(255, 255, 255);
   pointLight(255, 255, 255, width / 2, height / 2, 0);
   background(backdrop);
+  
+  if (pRecord) {
+    beginRaw(PDF, "frame.pdf");
+  }
+  
   for (Planet p : planets) {
     p.display();
   }
+  
+  if (pRecord) {
+    endRaw();
+    pRecord = false;
+  }
 }
+
+void keyReleased() {
+  switch (key) {
+    case 's': case 'S':
+      saveFrame();
+      break;
+    case 'p': case 'P':
+      // I couldn't make the PDF recording work.... sorry
+      //pRecord = true;
+      break;
+  }
+}
+      
