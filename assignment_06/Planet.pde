@@ -46,7 +46,8 @@ class Planet {
   
   void display() {
     pushMatrix();
-    translate((width / 2) + (cos(radians(revDeg))) * dist, (height / 2) + (sin(radians(revDeg))) * dist, -1000);
+    //translate((width / 2) + (cos(radians(revDeg)-(PI/2.0))) * dist, (height / 2) + (sin(radians((revDeg)-(PI/2.0)))) * dist, -1000);
+    translate((width / 2) + (cos(radians(revDeg) - (PI/2.0))) * dist, (height / 2) + (sin(radians(revDeg) - (PI/2.0))) * dist);
     rotateX(-PI/6.0);
     rotateY(radians(rotDeg));
     shape(planet);
